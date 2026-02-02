@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biomachinis - Eventos y Conferencias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        // Configuración de Tailwind con el nuevo color oscuro solicitado
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#e11d48',
+                            dark: '#be123c'
+                        },
+                        darkBg: {
+                            DEFAULT: '#131314', // El color solicitado
+                            card: '#1e1e1f',
+                            accent: '#272729'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 450px;
+        }
+
+        .card-shadow {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card-shadow:hover {
+            transform: translateY(-5px);
+        }
+
+        .dark .card-shadow {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .tag-pill {
+            background-color: rgba(225, 29, 72, 0.1);
+            color: #e11d48;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-gray-900 dark:text-gray-100">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white dark:bg-darkBg-card sticky top-0 z-50 shadow-sm border-b dark:border-darkBg-accent transition-colors duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                    <i class="fas fa-microchip text-white"></i>
+                </div>
+                <span class="text-2xl font-bold text-gray-800 dark:text-white">Biomachinis</span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8 font-medium text-gray-600 dark:text-gray-300">
+                <a href="#" class="text-primary">Inicio</a>
+                <a href="#" class="hover:text-primary transition">Páginas</a>
+                <a href="#" class="hover:text-primary transition">Eventos</a>
+                <a href="#" class="hover:text-primary transition">Ponentes</a>
+                <a href="#" class="hover:text-primary transition">Blog</a>
+                <a href="#" class="hover:text-primary transition">Contacto</a>
+            </nav>
+
+            <div class="flex items-center space-x-6">
+                <!-- Botón de Modo Oscuro -->
+                <button id="theme-toggle" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-darkBg-accent focus:outline-none rounded-lg text-sm p-2.5 transition">
+                    <i id="theme-toggle-dark-icon" class="hidden fas fa-moon text-lg"></i>
+                    <i id="theme-toggle-light-icon" class="hidden fas fa-sun text-lg"></i>
+                </button>
+
+                <i class="fas fa-search text-gray-500 dark:text-gray-400 cursor-pointer"></i>
+                
+                <button class="bg-primary text-white px-6 py-2.5 rounded-full font-semibold flex items-center gap-2 hover:bg-primary-dark transition">
+                    Registrarse <i class="fas fa-arrow-right text-sm"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section flex items-center">
+        <div class="container mx-auto px-6">
+            <nav class="text-white text-sm mb-4 opacity-80">
+                BIOMACHINIS <span class="mx-2">›</span> EVENTOS
+            </nav>
+            <h1 class="text-white text-5xl font-bold">Eventos</h1>
+        </div>
+    </section>
+
+    <!-- Events Grid -->
+    <main class="container mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            
+            <!-- Card 1 -->
+            <div class="bg-white dark:bg-darkBg-card rounded-3xl overflow-hidden card-shadow border border-transparent dark:border-darkBg-accent">
+                <img src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Evento 1" class="w-full h-56 object-cover">
+                <div class="p-8">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="tag-pill px-3 py-1 rounded-full font-bold">Inmunidad</span>
+                        <span class="text-gray-400 dark:text-gray-500 text-xs font-semibold">2024.03.18</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 hover:text-primary cursor-pointer transition">Chatbots y Asistentes Virtuales en Bioingeniería</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm flex items-center">
+                        <i class="fas fa-map-marker-alt text-primary mr-2"></i> 4821 RIDGE TOP CIR, ANCHORAGE
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white dark:bg-darkBg-card rounded-3xl overflow-hidden card-shadow border border-transparent dark:border-darkBg-accent">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Evento 2" class="w-full h-56 object-cover">
+                <div class="p-8">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="tag-pill px-3 py-1 rounded-full font-bold">Calidad</span>
+                        <span class="text-gray-400 dark:text-gray-500 text-xs font-semibold">2023.11.08</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 hover:text-primary cursor-pointer transition">Cumbre de Marketing Moderno Biomédico</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm flex items-center">
+                        <i class="fas fa-map-marker-alt text-primary mr-2"></i> 4821 RIDE TOP, USA MAIN CITY
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white dark:bg-darkBg-card rounded-3xl overflow-hidden card-shadow border border-transparent dark:border-darkBg-accent">
+                <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Evento 3" class="w-full h-56 object-cover">
+                <div class="p-8">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="tag-pill px-3 py-1 rounded-full font-bold">Concentración</span>
+                        <span class="text-gray-400 dark:text-gray-500 text-xs font-semibold">2023.11.21</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 hover:text-primary cursor-pointer transition">Taller de Apertura de Nuevas Instalaciones</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm flex items-center">
+                        <i class="fas fa-map-marker-alt text-primary mr-2"></i> 912 PARK AVE, KETCHIKAN
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white dark:bg-darkBg-card rounded-3xl overflow-hidden card-shadow border border-transparent dark:border-darkBg-accent">
+                <img src="https://images.unsplash.com/photo-1591115765373-520b7a21765b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Evento 4" class="w-full h-56 object-cover">
+                <div class="p-8">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="tag-pill px-3 py-1 rounded-full font-bold">Inmunidad</span>
+                        <span class="text-gray-400 dark:text-gray-500 text-xs font-semibold">2023.11.20</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 hover:text-primary cursor-pointer transition">Cómo lo Inmersivo Revitaliza la Cultura Médica</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm flex items-center">
+                        <i class="fas fa-map-marker-alt text-primary mr-2"></i> 4821 RIDGE TOP CIR, ANCHORAGE
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="bg-white dark:bg-darkBg-card rounded-3xl overflow-hidden card-shadow border border-transparent dark:border-darkBg-accent">
+                <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Evento 5" class="w-full h-56 object-cover">
+                <div class="p-8">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="tag-pill px-3 py-1 rounded-full font-bold">Estamina</span>
+                        <span class="text-gray-400 dark:text-gray-500 text-xs font-semibold">2023.11.14</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 hover:text-primary cursor-pointer transition">Noche de Machine Learning Biomachinis Parte 2</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm flex items-center">
+                        <i class="fas fa-map-marker-alt text-primary mr-2"></i> 2438 6TH AVE, KETCHIKAN
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="bg-white dark:bg-darkBg-card rounded-3xl overflow-hidden card-shadow border border-transparent dark:border-darkBg-accent">
+                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Evento 6" class="w-full h-56 object-cover">
+                <div class="p-8">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="tag-pill px-3 py-1 rounded-full font-bold">Conferencia</span>
+                        <span class="text-gray-400 dark:text-gray-500 text-xs font-semibold">2023.11.11</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 hover:text-primary cursor-pointer transition">Nuestro socio estratégico en el Pabellón Global</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm flex items-center">
+                        <i class="fas fa-map-marker-alt text-primary mr-2"></i> 156 MICHAEL CT, ANCHORAGE
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Newsletter Section -->
+    <section class="bg-darkBg-card py-20 border-t border-darkBg-accent transition-colors">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <h2 class="text-white text-4xl font-bold mb-8 md:mb-0 max-w-md">¡SUSCRÍBETE A NUESTRO BOLETÍN!</h2>
+            <div class="relative w-full md:w-1/2 max-w-xl">
+                <input type="email" placeholder="Tu dirección de correo" class="w-full bg-white dark:bg-darkBg-accent dark:text-white border border-transparent dark:border-slate-700 rounded-full py-4 px-8 focus:outline-none text-gray-800">
+                <button class="absolute right-2 top-2 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-primary-dark transition">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darkBg-card text-gray-400 pt-20 pb-10 transition-colors">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div>
+                <div class="flex items-center space-x-2 mb-6">
+                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-microchip text-white"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Biomachinis</span>
+                </div>
+                <p class="text-sm leading-relaxed">Liderando la innovación tecnológica en biociencias a través de eventos globales de alto impacto.</p>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6">Enlaces Útiles</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-primary transition">Sobre el Evento</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Blog</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Contacto</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Tickets</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Sedes</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6">Contáctanos</h4>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex items-center gap-2">
+                        <i class="far fa-envelope text-primary"></i>
+                        noreply@biomachinis.com
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-phone-alt text-primary"></i>
+                        +(02) 574 - 328 - 301
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6">Nuestras Redes</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 border border-darkBg-accent rounded-full flex items-center justify-center hover:bg-primary hover:border-transparent transition">
+                        <i class="fab fa-facebook-f text-sm text-white"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 border border-darkBg-accent rounded-full flex items-center justify-center hover:bg-primary hover:border-transparent transition">
+                        <i class="fab fa-twitter text-sm text-white"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 border border-darkBg-accent rounded-full flex items-center justify-center hover:bg-primary hover:border-transparent transition">
+                        <i class="fab fa-linkedin-in text-sm text-white"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 border border-darkBg-accent rounded-full flex items-center justify-center hover:bg-primary hover:border-transparent transition">
+                        <i class="fab fa-instagram text-sm text-white"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 pt-8 border-t border-darkBg-accent flex flex-col md:flex-row justify-between items-center text-xs">
+            <p>Copyright © 2024 Biomachinis Demo. Todos los derechos reservados.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white">Términos y Condiciones</a>
+                <a href="#" class="hover:text-white">Política de Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botones flotantes -->
+    <div class="fixed right-6 bottom-24 flex flex-col space-y-2">
+        <div class="bg-green-500 w-10 h-10 rounded-md flex items-center justify-center shadow-lg cursor-pointer hover:bg-green-600 transition">
+            <i class="fas fa-cube text-white"></i>
+        </div>
+        <div class="bg-primary w-10 h-10 rounded-md flex items-center justify-center shadow-lg cursor-pointer hover:bg-primary-dark transition">
+            <i class="fas fa-rocket text-white"></i>
+        </div>
+    </div>
+
+    <!-- Botón volver arriba -->
+    <div onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed right-6 bottom-6 bg-primary w-10 h-10 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-primary-dark transition">
+        <i class="fas fa-chevron-up text-white text-xs"></i>
+    </div>
+
+    <script>
+        // Lógica de cambio de tema
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        // Verificar preferencia previa o sistema
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            // Alternar iconos
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // Alternar clase dark y guardar preferencia
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>

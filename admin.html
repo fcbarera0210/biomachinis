@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biomachinis Admin - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#e11d48',
+                            dark: '#be123c'
+                        },
+                        darkBg: {
+                            DEFAULT: '#131314',
+                            card: '#1e1e1f',
+                            accent: '#272729'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease; }
+        .sidebar-link.active { background-color: rgba(225, 29, 72, 0.1); color: #e11d48; border-right: 4px solid #e11d48; }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-gray-900 dark:text-gray-100 flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white dark:bg-darkBg-card border-r dark:border-darkBg-accent hidden lg:flex flex-col">
+        <div class="p-6 flex items-center space-x-2">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <i class="fas fa-microchip text-white"></i>
+            </div>
+            <span class="text-xl font-bold text-gray-800 dark:text-white">Biomachinis</span>
+        </div>
+        
+        <nav class="mt-6 flex-1">
+            <a href="#" class="sidebar-link active flex items-center px-6 py-4 transition">
+                <i class="fas fa-th-large mr-3"></i> Dashboard
+            </a>
+            <a href="#" class="sidebar-link flex items-center px-6 py-4 text-gray-500 hover:text-primary transition">
+                <i class="fas fa-newspaper mr-3"></i> Noticias
+            </a>
+            <a href="#" class="sidebar-link flex items-center px-6 py-4 text-gray-500 hover:text-primary transition">
+                <i class="fas fa-calendar-alt mr-3"></i> Eventos
+            </a>
+            <a href="#" class="sidebar-link flex items-center px-6 py-4 text-gray-500 hover:text-primary transition">
+                <i class="fas fa-users mr-3"></i> Usuarios
+            </a>
+            <a href="#" class="sidebar-link flex items-center px-6 py-4 text-gray-500 hover:text-primary transition">
+                <i class="fas fa-cog mr-3"></i> Configuración
+            </a>
+        </nav>
+
+        <div class="p-6 border-t dark:border-darkBg-accent">
+            <button id="theme-toggle" class="flex items-center space-x-3 text-gray-500 dark:text-gray-400 w-full hover:text-primary transition">
+                <i id="theme-toggle-icon" class="fas fa-moon"></i>
+                <span id="theme-text">Modo Oscuro</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden">
+        
+        <!-- Topbar -->
+        <header class="h-16 bg-white dark:bg-darkBg-card border-b dark:border-darkBg-accent flex items-center justify-between px-8 shrink-0">
+            <h2 class="text-lg font-semibold">Panel de Administración</h2>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <i class="far fa-bell text-gray-400 cursor-pointer hover:text-primary"></i>
+                    <span class="absolute -top-1 -right-1 bg-primary w-2 h-2 rounded-full border-2 border-white dark:border-darkBg-card"></span>
+                </div>
+                <div class="h-8 w-px bg-gray-200 dark:bg-darkBg-accent"></div>
+                <div class="flex items-center space-x-3 cursor-pointer">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-sm font-bold">Admin Usuario</p>
+                        <p class="text-xs text-gray-500">Super Admin</p>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=e11d48&color=fff" class="w-10 h-10 rounded-full border dark:border-darkBg-accent">
+                </div>
+            </div>
+        </header>
+
+        <!-- Viewport -->
+        <div class="flex-1 overflow-y-auto p-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Main Dashboard Section -->
+                <div class="lg:col-span-2 space-y-8">
+                    
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="bg-white dark:bg-darkBg-card p-6 rounded-2xl shadow-sm border dark:border-darkBg-accent">
+                            <p class="text-gray-500 text-sm mb-1">Total Noticias</p>
+                            <h4 class="text-2xl font-bold">124</h4>
+                            <span class="text-green-500 text-xs font-semibold"><i class="fas fa-caret-up mr-1"></i> 12% este mes</span>
+                        </div>
+                        <div class="bg-white dark:bg-darkBg-card p-6 rounded-2xl shadow-sm border dark:border-darkBg-accent">
+                            <p class="text-gray-500 text-sm mb-1">Vistas Totales</p>
+                            <h4 class="text-2xl font-bold">45.2k</h4>
+                            <span class="text-green-500 text-xs font-semibold"><i class="fas fa-caret-up mr-1"></i> 8% este mes</span>
+                        </div>
+                        <div class="bg-white dark:bg-darkBg-card p-6 rounded-2xl shadow-sm border dark:border-darkBg-accent">
+                            <p class="text-gray-500 text-sm mb-1">Eventos Activos</p>
+                            <h4 class="text-2xl font-bold">12</h4>
+                            <span class="text-primary text-xs font-semibold">Próximo: Lunes</span>
+                        </div>
+                    </div>
+
+                    <!-- Recent News Table -->
+                    <div class="bg-white dark:bg-darkBg-card rounded-2xl shadow-sm border dark:border-darkBg-accent overflow-hidden">
+                        <div class="p-6 border-b dark:border-darkBg-accent flex justify-between items-center">
+                            <h3 class="font-bold">Noticias Recientes</h3>
+                            <button class="text-primary text-sm font-semibold hover:underline">Ver todas</button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="bg-gray-50 dark:bg-darkBg text-xs uppercase text-gray-500">
+                                    <tr>
+                                        <th class="px-6 py-4">Título</th>
+                                        <th class="px-6 py-4">Fecha</th>
+                                        <th class="px-6 py-4">Estado</th>
+                                        <th class="px-6 py-4 text-right">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y dark:divide-darkBg-accent text-sm">
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-darkBg-accent transition">
+                                        <td class="px-6 py-4 font-medium">IA en Bioingeniería Cardiovascular</td>
+                                        <td class="px-6 py-4 text-gray-500">hace 2 horas</td>
+                                        <td class="px-6 py-4">
+                                            <span class="px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-md text-xs">Publicado</span>
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <button class="text-gray-400 hover:text-primary mx-2"><i class="far fa-edit"></i></button>
+                                            <button class="text-gray-400 hover:text-red-500 mx-2"><i class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-darkBg-accent transition">
+                                        <td class="px-6 py-4 font-medium">Nuevos sensores de glucosa no invasivos</td>
+                                        <td class="px-6 py-4 text-gray-500">hace 1 día</td>
+                                        <td class="px-6 py-4">
+                                            <span class="px-2 py-1 bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400 rounded-md text-xs">Borrador</span>
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <button class="text-gray-400 hover:text-primary mx-2"><i class="far fa-edit"></i></button>
+                                            <button class="text-gray-400 hover:text-red-500 mx-2"><i class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Form -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white dark:bg-darkBg-card p-8 rounded-2xl shadow-sm border dark:border-darkBg-accent sticky top-0">
+                        <h3 class="font-bold text-xl mb-6">Subir Nueva Noticia</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1 text-gray-600 dark:text-gray-400">Título de la noticia</label>
+                                <input type="text" placeholder="Ej. Avances en Prótesis Robóticas" class="w-full bg-gray-50 dark:bg-darkBg border dark:border-darkBg-accent rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1 text-gray-600 dark:text-gray-400">Categoría</label>
+                                <select class="w-full bg-gray-50 dark:bg-darkBg border dark:border-darkBg-accent rounded-xl py-3 px-4 focus:outline-none text-sm">
+                                    <option>Biotecnología</option>
+                                    <option>Eventos</option>
+                                    <option>Innovación</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1 text-gray-600 dark:text-gray-400">Contenido</label>
+                                <textarea rows="4" placeholder="Escribe el resumen aquí..." class="w-full bg-gray-50 dark:bg-darkBg border dark:border-darkBg-accent rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1 text-gray-600 dark:text-gray-400">Imagen de portada</label>
+                                <div class="border-2 border-dashed border-gray-200 dark:border-darkBg-accent rounded-xl p-6 text-center hover:border-primary transition cursor-pointer">
+                                    <i class="fas fa-cloud-upload-alt text-2xl text-gray-400 mb-2"></i>
+                                    <p class="text-xs text-gray-500">Haz clic para subir o arrastra una imagen</p>
+                                </div>
+                            </div>
+                            <button class="w-full bg-primary text-white py-3 rounded-xl font-bold hover:bg-primary-dark transition shadow-lg shadow-primary/20 mt-4">
+                                Publicar Noticia
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-toggle-icon');
+        const themeText = document.getElementById('theme-text');
+
+        // Check preference
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            updateToggleState(true);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+            updateToggleState(isDark);
+        });
+
+        function updateToggleState(isDark) {
+            if (isDark) {
+                themeIcon.className = 'fas fa-sun';
+                themeText.innerText = 'Modo Claro';
+            } else {
+                themeIcon.className = 'fas fa-moon';
+                themeText.innerText = 'Modo Oscuro';
+            }
+        }
+    </script>
+</body>
+</html>
