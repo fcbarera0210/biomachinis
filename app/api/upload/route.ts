@@ -2,6 +2,8 @@ import { put } from "@vercel/blob";
 import { NextRequest, NextResponse } from "next/server";
 import { getCurrentUser } from "@/lib/auth/session";
 
+export const runtime = "nodejs";
+
 export async function POST(request: NextRequest) {
   try {
     const user = await getCurrentUser();
